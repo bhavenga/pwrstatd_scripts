@@ -3,7 +3,7 @@
 # Updated CyperPower email script as created/edited by Barend Havenga. 
 # If you're using a residential internet connection, you may need to configure ssmtp to relay your email messages.
 # 	See: http://www.cyberciti.biz/tips/linux-use-gmail-as-a-smarthost.html
-# All the cyberpower scripts can be found at http://www.cyberpowersystems.com/products/management-software/ppl.html
+# All the original cyberpower scripts can be found at http://www.cyberpowersystems.com/products/management-software/ppl.html
  
  
 # If you want to change SMTP server, edit following parameters into /etc/mail.rc file.
