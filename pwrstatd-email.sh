@@ -23,7 +23,7 @@ test ${#DATE}
 REMAINING_RUNTIME=$(pwrstat -status  |grep Remaining | awk ' { print $3 } ')
 MODEL_NAME=$(pwrstat -status  |grep Model | awk ' { print $3 } ')
 BATTERY_CAPACITY=$(pwrstat -status  |grep Capacity | awk ' { print $3 } ') 
-PWR_EVENT=$(pwrstat -status  |grep "Power Event" | awk ' { print $4,$5,$6,$7} ') 
+PWR_EVENT=$(pwrstat -status  |grep "Power Event" | awk ' { print $4,$5,$6,$7,$8,$9,$10} ') 
 LOAD=$(pwrstat -status  |grep "Load" | awk ' { print $2,$3,$4 } ') 
 
 RUNTIME="Remaining Runtime: $REMAINING_RUNTIME minutes"
