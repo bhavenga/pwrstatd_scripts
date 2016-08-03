@@ -11,9 +11,10 @@
 # set smtp-auth-user=user name
 # set smtp-auth-password=user password
  
+#echo "UPS MAIL TEST" | mail -s "$(echo -e "TESTING\nFrom: CyberPower UPS Monitor <havengacams@gmail.com>\nContent-Type: text/html\n")" barend.havenga@gmail.com
  
 SUBJECT="PowerPanel Notification - [$EVENT]"
-FROM="PowerPanel Daemon <$SENDER_ADDRESS>"
+FROM="PowerPanel UPS Monitor <$SENDER_ADDRESS>"
 TO="$RECEIPT_NAME <$RECEIPT_ADDRESS>"
 MESSAGE="Warning: A $EVENT event has occurred!"
  
@@ -29,9 +30,9 @@ LOAD=$(pwrstat -status  |grep "Load" | awk ' { print $2,$3,$4 } ')
 RUNTIME="Remaining Runtime: $REMAINING_RUNTIME minutes"
  
 DATA=(
-"========================================================"
+"============================="
 "   $SUBJECT"
-"========================================================"
+"============================="
 ""
 ""
 "$MESSAGE"
@@ -47,9 +48,16 @@ DATA=(
 )
  
 IFS=$'\n'
+
+#legacy mail format, deprecated under GNU Mailutils
+#echo "${DATA[*]}" | mail \
+#-r   "$FROM" \
+#-s   "$SUBJECT" \
+#     "$TO"
+
+# Current GNU Mailutils format 
 echo "${DATA[*]}" | mail \
--r   "$FROM" \
--s   "$SUBJECT" \
+-s   "$(echo -e "$SUBJECT\nFrom: $FROM\n")" \
      "$TO"
- 
+
 exit 0
